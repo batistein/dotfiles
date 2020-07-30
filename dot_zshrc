@@ -47,3 +47,4 @@ HISTFILE=~/.zsh_history
 
 
 bindkey '^[l' autosuggest-accept
+bindkey '^[^M' autosuggest-execute

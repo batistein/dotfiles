@@ -48,6 +48,7 @@ https://github.com/Aloxaf/fzf-tab
 - Alt+Enter for exit - final completion result
 - / for continous completion
 - Alt+L or Arrow-Right accepts normal completion
+- Alt+enter executes the autocompletion result
 
 # TODO
 Replace zsh's default completion selection menu with fzf!
