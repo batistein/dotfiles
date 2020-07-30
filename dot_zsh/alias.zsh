@@ -9,12 +9,16 @@ alias g='git'
 alias cal='gcal --starting-day=1'   
 alias weather='curl v2.wttr.in'  
 alias vim='nvim'
+alias vi='nvim'
+
 
 # files listing
 alias lsnotes='rg -e "(TODO|FIXME|OPTIMIZE|REVIEW)"'
-alias lsfiles='la | rg ^-'
-alias lsdirs='la | rg ^d'
+alias lsfiles='colorls -a | rg ^-'
+alias lsdirs='colorls -a | rg ^d'
 alias ls='colorls --group-directories-first'
+alias lc='colorls -laht --group-directories-first'
+alias la= 'colorls -a --group-directories-first'
 
 
 # Tmux

@@ -40,6 +40,15 @@ chsh -s $(which zsh)
 ```
 chmod 644 ~/.ssh/config
 ```
+
+# FZF tab completion
+https://github.com/Aloxaf/fzf-tab
+
+- Tab for fuzzy
+- Alt+Enter for exit - final completion result
+- / for continous completion
+
+
 # TODO
 Replace zsh's default completion selection menu with fzf!
 https://github.com/Aloxaf/fzf-tab
