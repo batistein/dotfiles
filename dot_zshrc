@@ -1,0 +1,42 @@
+#!/bin/zsh
+#ZSH Autoload
+autoload -Uz compinit promptinit zpty
+
+
+export STARSHIP_CONFIG=~/.zsh/starship.toml
+export SPACESHIP_USER_SHOW="always"
+export SPACESHIP_HOST_SHOW="always"
+eval "$(starship init zsh)"
+
+# all of our zsh files
+typeset -U config_files
+config_files=(~/.zsh/*.zsh)
+
+# load the path files
+for file in ${config_files}; do
+  source "$file"
+done
+
+# load antibody plugins
+source <(antibody init)
+antibody bundle < ~/.zsh_plugins.txt
+
+# Plugin Section
+# configure zsh-autosuggestions
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242,bg=grey,bold,underline"
+export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion) 
+export AUTO_NOTIFY_EXPIRE_TIME=300000
+
+
+# Krew Kubectl Plugin Manager
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+
+# History
+setopt inc_append_history
+setopt share_history
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
+# Easy directory navigation
+setopt  autocd autopushd \ pushdignoredups
