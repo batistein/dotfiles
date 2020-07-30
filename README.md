@@ -15,8 +15,21 @@
 - gnupg2
 - xclip
 
-# Add on your machine a ~/.config/chezmoi/chezmoi.toml
+# Install 
+
 ```
+chezmoi add https://github.com/batistein/dotfiles.git
+chezmoi apply
+
+## Make ZSH as Defaul Shell 
+chsh -s $(which zsh)
+```
+
+# Add on your machine a chezmoi.toml
+
+```
+# mkdir -p ~/.config/chezmoi && nano ~/.config/chezmoi/chezmoi.toml
+
 [data]
   email = "john@home.org"
   name = "name"

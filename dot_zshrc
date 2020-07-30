@@ -32,11 +32,9 @@ export AUTO_NOTIFY_EXPIRE_TIME=300000
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 
+setopt inc_append_history share_history autocd autopushd pushdignoredups
+
 # History
-setopt inc_append_history
-setopt share_history
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
-# Easy directory navigation
-setopt  autocd autopushd \ pushdignoredups
