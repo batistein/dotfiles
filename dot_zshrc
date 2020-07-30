@@ -1,7 +1,8 @@
 #!/bin/zsh
 #ZSH Autoload
-autoload -Uz compinit
+autoload -Uz compinit promptinit
 compinit
+promptinit
 
 export STARSHIP_CONFIG=~/.zsh/starship.toml
 export SPACESHIP_USER_SHOW="always"
@@ -35,9 +36,14 @@ antibody bundle < ~/.zsh_plugins.txt
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 
-setopt inc_append_history share_history autocd autopushd pushdignoredups
+setopt inc_append_history share_history autocd autopushd pushdignoredups 
+setopt COMPLETE_ALIASES
+
+zstyle ':completion::complete:*' gain-privileges 1
 
 # History
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
+
+bindkey '^[l' autosuggest-accept

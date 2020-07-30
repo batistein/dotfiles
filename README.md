@@ -47,7 +47,7 @@ https://github.com/Aloxaf/fzf-tab
 - Tab for fuzzy
 - Alt+Enter for exit - final completion result
 - / for continous completion
-
+- Alt+L or Arrow-Right accepts normal completion
 
 # TODO
 Replace zsh's default completion selection menu with fzf!
