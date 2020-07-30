@@ -36,7 +36,10 @@ chsh -s $(which zsh)
 
 ```
 
-
+# Change access rights
+```
+chmod 644 ~/.ssh/config
+```
 # TODO
 Replace zsh's default completion selection menu with fzf!
 https://github.com/Aloxaf/fzf-tab
