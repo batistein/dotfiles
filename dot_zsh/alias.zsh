@@ -10,6 +10,8 @@ alias cal='gcal --starting-day=1'
 alias weather='curl v2.wttr.in'  
 alias vim='nvim'
 alias vi='nvim'
+alias e="$EDITOR"
+alias v="$VISUAL"
 
 
 # files listing
