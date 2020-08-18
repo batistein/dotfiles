@@ -1,11 +1,863 @@
-set runtimepath+=~/.vim_runtime
+"  Vim plug
+" https://github.com/junegunn/vim-plug
 
-source ~/.vim_runtime/vimrcs/basic.vim
-source ~/.vim_runtime/vimrcs/filetypes.vim
-source ~/.vim_runtime/vimrcs/plugins_config.vim
-source ~/.vim_runtime/vimrcs/extended.vim
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-try
-source ~/.vim_runtime/my_configs.vim
-catch
-endtry
+" ------------------------------------------------------------------------------
+
+let g:plugin_path = '~/.config/nvim/plugged'
+
+call plug#begin(g:plugin_path)
+
+" Theme
+" ------------------------------------------------------------------------------
+
+Plug 'simonsmith/material.vim'
+
+" tmux
+" ------------------------------------------------------------------------------
+
+if executable('tmux')
+  " Navigate between vim and tmux splits
+  Plug 'christoomey/vim-tmux-navigator'
+  " Restore `FocusLost` and `FocusGained` events in tmux
+  Plug 'tmux-plugins/vim-tmux-focus-events'
+endif
+
+" Finding and replacing
+" ------------------------------------------------------------------------------
+
+" Fuzzy finding anything
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+" fzf integration for Vim
+Plug 'junegunn/fzf.vim'
+" Improved search in Vim
+Plug 'junegunn/vim-slash'
+
+" File management
+" ------------------------------------------------------------------------------
+
+" File browser
+Plug 'mcchrish/nnn.vim'
+" Undo visualise
+Plug 'mbbill/undotree'
+
+" Buffers
+" ------------------------------------------------------------------------------
+
+" Close all buffers except current
+Plug 'schickling/vim-bufonly'
+" Close buffers without losing window layout
+Plug 'moll/vim-bbye'
+" Manage buffers in a list
+Plug 'jlanzarotta/bufexplorer'
+
+" Search
+" ------------------------------------------------------------------------------
+
+Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-grepper'
+
+" Language pack
+" ------------------------------------------------------------------------------
+
+" Syntax and highlighting for every language
+Plug 'sheerun/vim-polyglot'
+Plug 'jparise/vim-graphql'
+Plug 'maxmellon/vim-jsx-pretty'
+
+" Editing
+" ------------------------------------------------------------------------------
+
+" Allow plugins to be repeated with dot
+Plug 'tpope/vim-repeat'
+" Comment out blocks of code
+Plug 'tomtom/tcomment_vim'
+" Toggle location and quickfix lists
+Plug 'Valloric/ListToggle'
+" Advanced movement similar to motions
+Plug 'justinmk/vim-sneak'
+" Keep folds performant
+Plug 'Konfekt/FastFold'
+" Move between windows and allow swapping position
+Plug 't9md/vim-choosewin'
+" Remember cursor position in closed buffers
+Plug 'dietsche/vim-lastplace'
+" Open files from Quickfix
+Plug 'yssl/QFEnter'
+" Move blocks of code with ALT+j/k
+Plug 'matze/vim-move'
+" Multiple cursors
+Plug 'terryma/vim-multiple-cursors'
+
+" Text objects
+" ------------------------------------------------------------------------------
+
+" Allow motions like `w`, `b` and `iw` to work on camel case
+Plug 'chaoren/vim-wordmotion'
+" Improve text objects for arguments, brackets etc
+Plug 'wellle/targets.vim'
+" Move arguments
+Plug 'AndrewRadev/sideways.vim'
+" Add various text objects
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-function'
+" aE
+Plug 'kana/vim-textobj-entire'
+" al
+Plug 'kana/vim-textobj-line'
+" af
+Plug 'thinca/vim-textobj-function-javascript', {'for': ['javascript', 'javascript.jsx', 'json']}
+" ax
+Plug 'whatyouhide/vim-textobj-xmlattr'
+
+" General
+" ------------------------------------------------------------------------------
+
+" Set spaces and other settings on a per project basis
+Plug 'editorconfig/editorconfig-vim'
+" Whitespace removal
+Plug 'ntpeters/vim-better-whitespace'
+" Smooth scroll
+Plug 'psliwka/vim-smoothie'
+
+" Refactoring
+" ------------------------------------------------------------------------------
+
+" Split and join HTML tags, JS objects etc
+Plug 'AndrewRadev/splitjoin.vim'
+" Make it easy to add/remove/change brackets, quotes etc
+Plug 'tpope/vim-surround'
+
+" Copy/Paste behaviour
+" ------------------------------------------------------------------------------
+
+" Stop everything saving to a register and instead rely on just `m` for cut
+Plug 'svermeulen/vim-easyclip'
+" Improve pasting code from the clipboard
+Plug 'ConradIrwin/vim-bracketed-paste'
+
+" Sessions
+" ------------------------------------------------------------------------------
+
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+
+" Status bar
+" ------------------------------------------------------------------------------
+
+Plug 'vim-airline/vim-airline'
+
+" Tabs
+" ------------------------------------------------------------------------------
+
+" Make managing tabs easier with rename, add, delete etc
+Plug 'gcmt/taboo.vim'
+" Allow a window to be fully viewed. Useful when multiple splits are in use
+Plug 'troydm/zoomwintab.vim'
+
+" Snippets
+" ------------------------------------------------------------------------------
+
+Plug 'epilande/vim-react-snippets'
+Plug 'epilande/vim-es2015-snippets'
+Plug 'joaohkfaria/vim-jest-snippets'
+Plug 'simonsmith/vim-custom-snippets'
+Plug 'SirVer/ultisnips'
+
+" Git
+" ------------------------------------------------------------------------------
+
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/gv.vim'
+
+" HTML/CSS
+" ------------------------------------------------------------------------------
+
+" Easy HTML and CSS generation
+Plug 'mattn/emmet-vim'
+" Automatically add a closing HTML tag
+Plug 'alvan/vim-closetag'
+" Better Scss highlighting than polyglot
+Plug 'tpope/vim-haml'
+" CSS highlight
+Plug 'chrisbra/Colorizer'
+
+" JavaScript
+" ------------------------------------------------------------------------------
+
+Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
+Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
+
+" Autocomplete & linting
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'bmatcuk/coc-stylelintplus', {'do': 'yarn install --frozen-lockfile'}
+Plug 'antonk52/coc-cssmodules', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'}
+Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+
+call plug#end()
+
+" Shortcut for checking if a plugin is loaded
+function! s:has_plugin(plugin)
+  let lookup = 'g:plugs["' . a:plugin . '"]'
+  return exists(lookup)
+endfunction
+
+"  General config
+" ------------------------------------------------------------------------------
+
+if s:has_plugin('material.vim')
+  let g:material_theme_style = 'palenight'
+end
+
+set background=dark
+silent! colorscheme material
+
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags='li\|p'
+
+" Set <space> to leader
+let mapleader=' '
+let maplocalleader='\'
+
+" Turn off swapfiles
+set noswapfile
+set nobackup
+set nowb
+
+" Allow editing of binary files
+" Must be set before expandtab
+" http://stackoverflow.com/a/26901774
+set binary
+
+" Enable term 24 bit colour
+set termguicolors
+
+" Make it obvious where 80 characters is
+set textwidth=80
+
+" Use ``indent`` based folding
+set foldmethod=indent
+" Disable all folds on file open until `zc` or `zM` etc is used
+set nofoldenable
+
+" With :set hidden, opening a new file when the current buffer has unsaved
+" changes causes files to be hidden instead of closed
+set hidden
+
+" Allow tab names to be remembered in sessions
+set sessionoptions+=tabpages,globals
+
+" Briefly move the cursor to the matching brace
+set showmatch
+
+" Lazyredraw attempts to solve Vim lag by reducing the amount of
+" processing required. When enabled, any action that is not typed
+" will not cause the screen to redraw
+set lazyredraw
+
+" Don't display the current mode (Insert, Visual, Replace)
+" in the status line. This info is already shown in the
+" Airline status bar.
+set noshowmode
+
+" Stop vim trying to syntax highlight long lines, typically found in minified
+" files. This greatly reduces lag yet is still wide enough for large displays
+set synmaxcol=500
+
+" Highlight current line
+set cursorline
+
+" Indent using two spaces.
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
+
+" Smoother scrolling when moving horizontally
+set sidescroll=1
+
+" Use spaces, not tabs
+set expandtab
+
+" Don't scan included files. The .tags file is more performant.
+set complete-=i
+set complete+=kspell
+
+" Prevent autocomplete options opening in scratchpad
+set completeopt-=preview
+
+" This is set low so that gitgutter updates reasonably quickly
+" https://github.com/airblade/vim-gitgutter#when-are-the-signs-updated
+set updatetime=300
+
+" Don't wrap lines
+set nowrap
+
+" Keep the cursor in the same place when switching buffers
+set nostartofline
+
+" Show col and line position in the statusbar
+set ruler
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Ignore case of searches
+set ignorecase
+
+" If a pattern contains an uppercase letter
+" it is case sensitive, otherwise, it is not
+set smartcase
+
+" Use the OS clipboard by default (on versions compiled with `+clipboard`)
+set clipboard=unnamed
+
+" Spell check
+set spelllang=en
+
+" Where it should get the dictionary files
+let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
+
+" For autocompletion, complete as much as you can.
+set wildmode=list:longest,full
+
+" don't add extra space after ., !, etc. when joining
+set nojoinspaces
+
+" Eliminate delay when switching modes
+set ttimeoutlen=0
+
+" Enable mouse with tmux
+set mouse=a
+
+" Auto save changes before switching buffer
+set autowrite
+
+" Add the g flag to search/replace by default
+set gdefault
+
+" Centralize backups, swapfiles and undo history
+set backupdir=~/.config/nvim/backups
+set directory=.,$TEMP " Stop the swp file warning
+
+if has("persistent_undo")
+  set undodir=~/.config/nvim/undo
+  set undofile
+  set undolevels=1000
+  set undoreload=10000
+endif
+
+" Always show sign column for git icons
+set signcolumn=yes
+
+" Don’t create backups when editing files in certain directories
+set backupskip=/tmp/*,/private/tmp/*
+
+" Respect modeline in files
+set modeline
+set modelines=4
+
+" Enable per-directory .vimrc files and disable unsafe commands in them
+set exrc
+set secure
+
+" Show “invisible” characters
+set lcs=tab:▸\ ,trail:·,nbsp:_
+set list
+
+" Disable error bells
+set noerrorbells
+
+" Don't show the intro message when starting Vim
+" Also suppress several 'Press Enter to continue messages' especially
+" with FZF
+set shortmess=aoOtIWcFs
+
+" Show the current mode
+set title
+
+" Show the (partial) command as it’s being typed
+set showcmd
+
+" Line numbers
+set number
+set relativenumber
+
+" Path and file extensions to look for when using `gf`
+set suffixesadd+=.css,index.css,.js,.jsx,.scss
+set path+=.,src
+
+" https://damien.pobel.fr/post/configure-neovim-vim-gf-javascript-import/
+function! LoadMainNodeModule(fname)
+  let nodeModules = "./node_modules/"
+  let packageJsonPath = nodeModules . a:fname . "/package.json"
+  if filereadable(packageJsonPath)
+    return nodeModules . a:fname . "/" . json_decode(join(readfile(packageJsonPath))).main
+  else
+    return nodeModules . a:fname
+  endif
+endfunction
+
+set includeexpr=LoadMainNodeModule(v:fname)
+
+" Start scrolling before cursor gets to the edge
+set scrolloff=3
+set sidescrolloff=15
+set sidescroll=1
+
+" Remap annoying mistakes to something useful
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Qa q
+cnoreabbrev Qall qall
+
+" Key mappings
+" ------------------------------------------------------------------------------
+
+" gf but in a vsplit
+nnoremap gv :vertical wincmd f<cr>
+
+" Save file
+nnoremap <silent><leader>w :silent wa<cr>
+
+" Force j and k to work on display lines
+nnoremap k gk
+nnoremap j gj
+vnoremap k gk
+vnoremap j gj
+
+" Disable arrow keys
+noremap <right> <Nop>
+noremap <left> <Nop>
+noremap <up> <Nop>
+noremap <down> <Nop>
+
+" Delete line but preserve the space
+nnoremap dD S<Esc>
+
+" Make `Y` work from the cursor to the end of line
+nnoremap Y y$
+
+" Reformat whole file and move back to original position
+nnoremap g= gg=G``
+
+" Automatically jump to end of pasted text
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+" Split
+noremap <silent><leader>x :split<cr>
+noremap <silent><leader>v :vsplit<cr>
+
+" Switch buffers
+nnoremap <silent>H :silent bp<CR>
+nnoremap <silent>L :silent bn<CR>
+
+" Spellcheck
+nnoremap <F6> :setlocal spell!<cr>
+
+" Clear search (highlight)
+nnoremap <silent> <leader>k :noh<cr>
+
+" Automatically 'gv' (go to previously selected visual block)
+" after indenting or unindenting.
+vnoremap < <gv
+vnoremap > >gv
+
+" Press enter for newline without insert
+nnoremap <cr> o<esc>
+" but don't effect command line mode
+autocmd CmdwinEnter * nnoremap <CR> <CR>
+autocmd CmdwinLeave * nnoremap <cr> o<esc>
+
+" Allow sourcing of vimrc
+nnoremap <leader>y :source $MYVIMRC<cr>
+
+if exists(':tnoremap')
+  " Allow movement seamlessly with terminals
+  tnoremap <C-h> <C-\><C-n><C-w>h
+  tnoremap <C-j> <C-\><C-n><C-w>j
+  tnoremap <C-k> <C-\><C-n><C-w>k
+  tnoremap <C-l> <C-\><C-n><C-w>l
+endif
+
+"  Plugin config
+" ------------------------------------------------------------------------------
+if s:has_plugin('vim-textobj-entire')
+  let g:textobj_entire_no_default_key_mappings = 1
+  xmap aE <Plug>(textobj-entire-a)
+  omap aE <Plug>(textobj-entire-a)
+  xmap iE <Plug>(textobj-entire-i)
+  omap iE <Plug>(textobj-entire-i)
+endif
+
+if s:has_plugin('ultisnips')
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<tab>"
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+  let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+endif
+
+if s:has_plugin('coc.nvim')
+  " Remap keys for gotos
+  nmap <silent> <leader>dr <Plug>(coc-references)
+  nmap <silent> <leader>dR <Plug>(coc-refactor)
+  nmap <silent> <leader>dd <Plug>(coc-implementation)
+  nmap <silent> <leader>dy <Plug>(coc-type-definition)
+  nmap <silent> <leader>dn <Plug>(coc-rename)
+  nmap <silent> <leader>dl <Plug>(coc-codelens-action)
+  nmap <silent> <leader>da <Plug>(coc-codeaction)
+  nmap <silent> <leader>dv :vsplit<cr> <Plug>(coc-implementation)
+
+  nmap <silent> <leader>p :Prettier<cr>
+
+  " restart coc because it breaks so often
+  nmap <silent> <leader>r :CocRestart<cr>
+
+  hi CocCodeLens guifg=#3a445e
+
+  let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+  let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+  command! -nargs=0 Prettier :CocCommand prettier.formatFile
+  nmap <silent> <leader>uf :CocList snippets<cr>
+
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+  " documentation popup
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  function! s:show_documentation()
+    if &filetype == 'vim'
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
+endif
+
+if s:has_plugin('editorconfig-vim')
+  let g:EditorConfig_max_line_indicator = "none"
+  let g:EditorConfig_preserve_formatoptions = 1
+endif
+
+if s:has_plugin('bufexplorer')
+  let g:bufExplorerDisableDefaultKeyMapping = 1
+  let g:bufExplorerShowNoName = 1
+  nnoremap <leader>b :BufExplorer<cr>
+endif
+
+if s:has_plugin('vim-easyclip')
+  let g:EasyClipUseSubstituteDefaults = 0
+  let g:EasyClipUsePasteDefaults = 0
+  nmap s <plug>SubstituteOverMotionMap
+  xmap s <plug>XEasyClipPaste
+  imap <c-v> <plug>EasyClipInsertModePaste
+  " Place a mark (m taken by easyclip)
+  nnoremap gm m
+endif
+
+if s:has_plugin('sideways.vim')
+  nnoremap ]j :SidewaysRight<cr>
+  nnoremap [j :SidewaysLeft<cr>
+endif
+
+if s:has_plugin('undotree')
+  nnoremap <F5> :UndotreeToggle<cr>
+  let g:undotree_SplitWidth = 45
+endif
+
+if s:has_plugin('vim-bufonly')
+  nnoremap <leader>B :BufOnly<cr>
+endif
+
+if s:has_plugin('vim-javascript')
+  let g:javascript_plugin_flow=1
+  let g:javascript_plugin_jsdoc=1
+endif
+
+if s:has_plugin('vim-grepper')
+  nnoremap <leader>g :Grepper -tool ag<cr>
+  nnoremap <leader>G :Grepper -tool ag -buffers<cr>
+  nmap gs <plug>(GrepperOperator)
+  xmap gs <plug>(GrepperOperator)
+  let g:grepper = {}
+  let g:grepper.stop = 2500
+  let g:grepper.open = 50
+  let g:grepper.highlight = 1
+end
+
+if s:has_plugin('vim-better-whitespace')
+  autocmd BufEnter * EnableStripWhitespaceOnSave
+  highlight ExtraWhitespace ctermbg=red guibg = #e06c75
+endif
+
+if s:has_plugin('vim-sneak')
+  let g:sneak#use_ic_scs = 0
+  nmap <leader>s <Plug>Sneak_s
+  nmap <leader>S <Plug>Sneak_S
+  xmap <leader>s <Plug>Sneak_s
+  xmap <leader>S <Plug>Sneak_S
+  let g:sneak#streak = 1
+endif
+
+if s:has_plugin('vim-session')
+  let g:session_autosave = 'yes'
+  let g:session_autoload = 'no'
+endif
+
+if s:has_plugin('vim-polyglot')
+  let g:polyglot_disabled = ['markdown', 'scss']
+  let g:vue_disable_pre_processors = 1
+  let g:jsx_ext_required = 0
+endif
+
+if s:has_plugin('splitjoin.vim')
+  let g:splitjoin_split_mapping = ''
+  let g:splitjoin_join_mapping = ''
+  nmap gj :SplitjoinSplit<cr>
+  nmap gk :SplitjoinJoin<cr>
+endif
+
+
+if s:has_plugin('vim-smoothie')
+  let g:smoothie_base_speed = 25
+  let g:smoothie_update_interval = 5
+endif
+
+if s:has_plugin('vim-closetag')
+  let g:closetag_filenames = "*.html,*.js,*.jsx"
+  let g:closetag_close_shortcut = ''
+endif
+
+if s:has_plugin('vim-choosewin')
+  nmap  <leader>h <plug>(choosewin)
+  let g:choosewin_label_fill = 0
+  let g:choosewin_blink_on_land = 0
+endif
+
+if s:has_plugin('pear-tree')
+  let g:pear_tree_repeatable_expand = 0
+  let g:pear_tree_smart_openers = 1
+  let g:pear_tree_smart_closers = 1
+  let g:pear_tree_smart_backspace = 1
+endif
+
+if s:has_plugin('mileszs/ack.vim')
+  if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+    let g:ack_qhandler = "botright copen 40"
+  endif
+endif
+
+if s:has_plugin('vim-bbye')
+  nnoremap <silent>Q :silent Bdelete<cr>
+endif
+
+if s:has_plugin('taboo.vim')
+  let g:taboo_tabline = 0 " Let airline handle it all
+  let g:taboo_renamed_tab_format = '%l%m'
+  nnoremap th :tabprev<cr>
+  nnoremap tl :tabnext<cr>
+  nnoremap tn :tabnew<cr>
+  nnoremap td :tabclose<cr>
+  nnoremap to :TabooOpen<space>
+  nnoremap tr :TabooRename<space>
+endif
+
+if s:has_plugin('nnn.vim')
+  nmap _ :NnnPicker '%:p:h'<cr>
+  let g:nnn#command = 'nnn -d -H'
+  let g:nnn#action = {
+        \ '<c-x>': 'split',
+        \ '<c-v>': 'vsplit' }
+endif
+
+if s:has_plugin('gv.vim')
+  nnoremap <c-g> :GV!<cr>
+endif
+
+if s:has_plugin('fzf.vim')
+  let g:fzf_height = '40%'
+  let g:fzf_commits_log_options = '--color --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset" --abbrev-commit'
+
+  nnoremap <c-p> :FZF<cr>
+  nnoremap <c-i> :Buffers<cr>
+  nnoremap <c-t> :Lines<cr>
+  nnoremap <c-space> :Rg!<cr>
+  nnoremap <silent> <BS> :History:<cr>
+
+  " Allow options to be passed to FZF :Ag
+  " Probably quite hacky until a better solution appears
+  " https://github.com/junegunn/fzf.vim/issues/92#issuecomment-191248596
+  function! s:ag_with_opts(arg, bang)
+    let tokens  = split(a:arg)
+    let ag_opts = join(filter(copy(tokens), 'v:val =~ "^-"'))
+    let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
+    call fzf#vim#ag(query, '--hidden --ignore .git', a:bang ? {} : {'down': '40%'})
+  endfunction
+
+command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --pretty --no-heading '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+  if has('autocmd')
+    autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
+  endif
+
+  let g:fzf_colors =
+  \ { 'fg':      ['fg', 'Normal'],
+    \ 'bg':      ['bg', 'Normal'],
+    \ 'hl':      ['fg', 'Boolean'],
+    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+    \ 'hl+':     ['fg', 'Statement'],
+    \ 'info':    ['fg', 'PreProc'],
+    \ 'border':  ['fg', 'Ignore'],
+    \ 'prompt':  ['fg', 'Conditional'],
+    \ 'pointer': ['fg', 'Exception'],
+    \ 'marker':  ['fg', 'Keyword'],
+    \ 'spinner': ['fg', 'Label'],
+    \ 'header':  ['fg', 'Comment'] }
+endif
+
+if s:has_plugin('ListToggle')
+  let g:lt_height = 18
+endif
+
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag with ack.vim - https://github.com/ggreer/the_silver_searcher#vim
+  let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
+endif
+
+if s:has_plugin('vim-airline')
+  let g:airline_theme = 'material'
+  let g:airline#extensions#branch#enabled = 1
+  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tmuxline#enabled = 0
+  let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
+  let g:airline#extensions#tabline#buffers_label = ''
+  let g:airline#extensions#tabline#fnamemod = ':t' " Show the filename
+  let g:airline#extensions#tabline#fnamecollapse = 0
+  let g:airline#extensions#tabline#show_tab_nr = 0
+  let g:airline#extensions#tabline#buffer_nr_show = 0
+  let g:airline#extensions#tabline#show_close_button = 0
+  let g:airline#extensions#coc#enabled = 0
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline#extensions#default#layout = [
+        \ [ 'a', 'c' ],
+        \ [ 'x', 'error', 'warning' ]
+        \ ]
+endif
+
+if s:has_plugin('vim-gitgutter')
+  let g:gitgutter_sign_added = '+'
+  let g:gitgutter_sign_modified = '•'
+  let g:gitgutter_sign_removed = '-'
+  let g:gitgutter_sign_modified_removed = '•'
+  let g:gitgutter_map_keys = 0
+  nmap [c <Plug>(GitGutterPrevHunk)
+  nmap ]c <Plug>(GitGutterNextHunk)
+endif
+
+if s:has_plugin('emmet-vim')
+  imap hh <plug>(emmet-expand-abbr)
+endif
+
+" Output the current syntax group
+nnoremap <f10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
+
+" Automatic commands
+" ------------------------------------------------------------------------------
+
+" Open help in a vertical split
+augroup vimrc-help
+  autocmd!
+  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | setlocal relativenumber | endif
+augroup END
+
+augroup file-types
+  autocmd!
+
+  " Override some syntaxes so things look better
+  autocmd BufNewFile,BufRead *.sss setlocal syntax=stylus
+  autocmd BufNewFile,BufRead *.snap,*.es6, setlocal filetype=javascript.jsx
+  autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*jshintrc setlocal syntax=json
+  autocmd BufNewFile,BufRead *.cshtml setlocal filetype=cshtml
+
+  " Wrap text and turn on spell for markdown files
+  autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
+
+  " Automatically wrap at 72 characters and spell check git commit messages
+  autocmd FileType gitcommit setlocal textwidth=72
+  autocmd FileType gitcommit setlocal spell
+
+  " Allow stylesheets to autocomplete hyphenated words
+  autocmd FileType css,scss,sass setlocal iskeyword+=-
+
+  autocmd BufEnter,BufLeave *.css,*.scss,*.sass :ColorHighlight!
+
+  " Use JS snippets in TS
+  autocmd FileType typescript,typescript.tsx,typescriptreact call UltiSnips#AddFiletypes('javascript.typescript')
+augroup END
+
+
+" Switch between normal and relative line numbers and cursorline
+" when switching modes
+augroup highlight-when-switching-modes
+  autocmd!
+  autocmd InsertEnter * setlocal number norelativenumber nocursorline
+  autocmd InsertLeave * setlocal relativenumber cursorline
+  autocmd WinEnter    * setlocal cursorline
+  autocmd WinLeave    * setlocal nocursorline
+augroup END
+
+" Periodically check for file changes
+augroup checktime
+  autocmd!
+  autocmd CursorHold * silent! checktime
+augroup END
+
+" Resize splits when vim changes size (like with tmux opening/closing)
+augroup auto-resize
+  autocmd!
+  autocmd VimResized * wincmd =
+augroup END
+
+" Autocomplete
+augroup omnifuncs
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup endif

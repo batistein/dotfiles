@@ -1,5 +1,4 @@
 #!/bin/sh
-
 if command -v kubectl krew >/dev/null 2>&1; then 
     kubectl krew install mtail
     kubectl krew install np-viewer

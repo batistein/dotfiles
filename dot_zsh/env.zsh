@@ -1,4 +1,3 @@
-
 ###########
 ## Shell ##
 ###########
@@ -38,4 +37,8 @@ export FZF_ALT_C_COMMAND="fd --one-file-system --type d --hidden --exclude .git 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242,bg=grey,bold,underline"
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion) 
 export AUTO_NOTIFY_THRESHOLD=120
-export AUTO_NOTIFY_EXPIRE_TIME=10000
+export AUTO_NOTIFY_EXPIRE_TIME=6000
+export AUTO_NOTIFY_IGNORE=("tmux" "tmuxinator" "docker" "glances" "vi" "vim" "nvim" "cat" "bat")
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"

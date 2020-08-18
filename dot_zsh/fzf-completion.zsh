@@ -64,3 +64,4 @@ zstyle ':fzf-tab:*' no-group-color $'\033[37m'
 
 # Full or brief
 zstyle ':fzf-tab:*' show-group full
+
