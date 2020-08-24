@@ -100,6 +100,23 @@ If you are having problems with Alacritty's logo, you can replace it with
 prerendered PNGs and simplified SVGs available in the `extra/logo/compat`
 directory.
 
+# Dotfiles
+
+## Zsh
+I use zsh as my shell and use antibody for plugins. Plugins for antigen are working.
+Starship is used as prompt.
+
+## Tmux
+Tmux is used as Terminalmultiplexer and to achieve together with neovim a IDE-like experience. 
+
+- vimux
+- vim-tmux-navigator
+- vim-tmux-runner
+## Nvim
+Is running with vim-plug.
+## fzf
+Is a command-line fuzzy finder it improves my workflow a lot and could be used across vim, zsh, tmux. 
+
 
 
 # TODO

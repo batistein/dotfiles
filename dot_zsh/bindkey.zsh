@@ -56,3 +56,4 @@ bindkey -e
 bindkey '^T' toggle-fzf-tab
 bindkey '^[l' autosuggest-accept
 bindkey '^[^M' autosuggest-execute
+enable-fzf-tab

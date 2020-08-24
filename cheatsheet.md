@@ -74,7 +74,21 @@ Shift     +   N     	SearchPrevious
 
 
 ## ZSH - Starship
+Control+F 		Move cursor forward one character
+Control+B		Move cursor backward one character
+Control+n		Move cursor down one line
+Control+P 		Move cursor up one line
+Control+K		Kill all characters to the right of the cursors on the same line
+Control+Y		Put whatever was killed last where the cursor is
+Control+D		Kill character to right of cursor
+Control+H		Kill character to left of cursor
+Control+E		Move cursor to the end of a line
+COntrol+A		Move cursor to the beginning of a line
 
+## fzf 
+Control+T		Toggle Fzf Tab
+Alt+l			autosuggest-accept
+Alt+Enter		autosuggest-execute
 
 ## Tmux
 

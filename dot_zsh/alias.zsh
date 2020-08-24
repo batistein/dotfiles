@@ -29,15 +29,15 @@ alias ports='netstat -tulanp'
 # Program overrides and shortcuts
 alias vim='nvim'
 alias vi='nvim'
-alias oldvim='vim'
-alias oldvi='vi'
+alias oldvim='\vim'
+alias oldvi='\vi'
 alias e="$EDITOR"
 alias v="$VISUAL"
 alias f="ranger"
 alias df='df -H'
 alias du='du -ch'
+alias oldcat="\cat"
 alias cat="bat"
-alias oldcat="cat"
 
 # files
 alias less='less -R'
