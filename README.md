@@ -22,6 +22,9 @@
 chezmoi add https://github.com/batistein/dotfiles.git
 chezmoi apply
 
+## Path:
+~/.local/share/chezmoi
+
 ## Make ZSH as Defaul Shell 
 chsh -s $(which zsh)
 ```

@@ -11,7 +11,7 @@ export SPACESHIP_HOST_SHOW="always"
 # Set your language environment
 export LANG=en_US.UTF-8
 
-export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git"'
 export FZF_DEFAULT_OPTS='--layout=reverse --inline-info'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -36,9 +36,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --one-file-system --type d --hidden --exclude .git . $HOME"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242,bg=grey,bold,underline"
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion) 
-export AUTO_NOTIFY_THRESHOLD=120
+export AUTO_NOTIFY_THRESHOLD=180
 export AUTO_NOTIFY_EXPIRE_TIME=6000
-export AUTO_NOTIFY_IGNORE=("tmux" "tmuxinator" "docker" "glances" "vi" "vim" "nvim" "cat" "bat")
+export AUTO_NOTIFY_IGNORE=("tmux" "tmate" "kubectl" "tmuxinator" "docker" "glances" "vi" "vim" "nvim" "cat" "bat" "ssh")
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
