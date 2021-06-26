@@ -19,6 +19,10 @@
 # Install 
 
 ```
+sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply batistein
+
+or
+
 chezmoi add https://github.com/batistein/dotfiles.git
 chezmoi apply
 

@@ -5,9 +5,9 @@ disabled = true
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]      # The name of the module we are configuring is "character"
-symbol = "➜"     # The "symbol" segment is being set to "➜"
-error_symbol = "✗"
-use_symbol_for_status = true
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
+vicmd_symbol = "[V](bold green) "
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -17,53 +17,15 @@ disabled = false
 truncation_length = 8
 
 [username]
+style_user = "yellow bold"
+style_root = "black bold"
+format = "[$user]($style) "
 disabled = false
 show_always = true
 
-prompt_order = [
-    "username",
-    "hostname",
-    "kubernetes",
-    "directory",
-    "git_branch",
-    "git_commit",
-    "git_state",
-    "git_status",
-    "hg_branch",
-    "docker_context",
-    "package",
-    "dotnet",
-    "elixir",
-    "elm",
-    "erlang",
-    "golang",
-    "java",
-    "julia",
-    "nim",
-    "nodejs",
-    "ocaml",
-    "php",
-    "purescript",
-    "python",
-    "ruby",
-    "rust",
-    "terraform",
-    "zig",
-    "nix_shell",
-    "conda",
-    "memory_usage",
-    "aws",
-    "env_var",
-    "crystal",
-    "cmd_duration",
-    "custom",
-    "line_break",
-    "jobs",
-    "battery",
-    "time",
-    "character",
-]
-
+[kubernetes]
+format = '[☸ $context $namespace](dimmed blue) '
+disabled = false
 
 [jobs]
 symbol = "+ "
@@ -77,6 +39,3 @@ threshold = -1
 
 [docker_context]
 disabled = false
-
-[kubernetes]
-disabled = false 
