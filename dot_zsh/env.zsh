@@ -20,9 +20,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 ###############
 
 # Go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
-
+export PATH=$PATH:/usr/local/go/bin
 
 #############
 ## Plugins ##
