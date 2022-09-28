@@ -36,8 +36,6 @@ alias v="$VISUAL"
 alias f="ranger"
 alias df='df -H'
 alias du='du -ch'
-alias oldcat="\cat"
-alias cat="bat"
 
 # files
 alias less='less -R'

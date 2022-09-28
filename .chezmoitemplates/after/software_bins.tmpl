@@ -1,0 +1,78 @@
+
+BAZELISK_VERSION=1.13.0 #https://github.com/bazelbuild/bazelisk/releases
+CHEZMOI_VERSION=2.22.0 #https://github.com/twpayne/chezmoi/releases
+KUBERNETES_VERSION=1.25.0 #https://github.com/kubernetes/kubernetes/releases
+KIND_VERSION=0.15.0 #https://github.com/kubernetes-sigs/kind/releases
+CLUSTERCTL_VERSION=1.2.1 #https://github.com/kubernetes-sigs/cluster-api/releases
+ZULIP_VERSION=5.9.4-rc.0 
+SLACK_VERSION=4.28.171 #https://slack.com/downloads/linux
+ZOOM_VERSION=5.11.10.4400 #https://support.zoom.us/hc/en-us/articles/205759689-Release-notes-for-Linux
+BITWARDEN_VERSION=2022.8.1  #https://github.com/bitwarden/clients/releases
+MAILSPRING_VERSION=1.10.5 #https://github.com/Foundry376/Mailspring/releases
+K9S_VERSION=0.26.3 #https://github.com/derailed/k9s/releases
+CILIUMCTL_VERSION=0.12.3 #https://github.com/cilium/cilium-cli/releases
+ISTIOCTL_VERSION=1.15.0 #https://github.com/istio/istio/releases/
+# CTLPTL_VERSION
+# HELMFILE_VERSION
+# HCLOUD_VERSION
+# KUBEBUILDER_VERSION
+# KUSTOMIZE_VERSION
+# PACKER_VERSION
+# TILT_VERSION
+# VELERO
+# YQ_VERSION
+# ARGOCD_VERSION
+
+curl -Lo ./bazel https://github.com/bazelbuild/bazelisk/releases/download/v${BAZELISK_VERSION}/bazelisk-linux-amd64
+chmod +x ./bazel
+mv ./bazel /usr/local/bin/bazel
+
+curl -Lo ./chezmoi.rpm https://github.com/twpayne/chezmoi/releases/download/v${CHEZMOI_VERSION}/chezmoi-${CHEZMOI_VERSION}-x86_64.rpm
+dnf install -y ./chezmoi.rpm
+
+curl -LO https://dl.k8s.io/release/v${KUBERNETES_VERSION}/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v${KIND_VERSION}/kind-linux-amd64
+chmod +x ./kind
+mv ./kind /usr/local/bin/kind
+
+curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
+
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+curl -L https://github.com/kubernetes-sigs/cluster-api/releases/download/v${CLUSTERCTL_VERSION}/clusterctl-linux-amd64 -o clusterctl  
+chmod +x ./clusterctl 
+mv ./clusterctl /usr/local/bin/clusterctl
+
+curl https://krew.sh/ | bash
+
+curl -L https://github.com/batistein/zulip-desktop/releases/download/v${ZULIP_VERSION}/Zulip-5.9.3-x86_64.rpm -o zulip.rpm
+dnf install -y zulip.rpm
+rm -rf zulip.rpm
+
+https://downloads.slack-edge.com/releases/linux/${SLACK_VERSION}/prod/x64/slack-${SLACK_VERSION}-0.1.el8.x86_64.rpm
+
+
+curl -L https://zoom.us/client/${ZOOM_VERSION}/zoom_x86_64.rpm -o zoom.rpm
+dnf install -y zoom.rpm
+rm -rf zoom.rpm
+
+curl -L https://github.com/bitwarden/clients/releases/download/desktop-v${BITWARDEN_VERSION}/Bitwarden-${BITWARDEN_VERSION}-x86_64.rpm -o bitwarden.rpm
+dnf install -y bitwarden.rpm
+rm -rf bitwarden.rpm
+
+curl -L https://github.com/Foundry376/Mailspring/releases/download/${MAILSPRING_VERSION}/mailspring-${MAILSPRING_VERSION}-0.1.x86_64.rpm -o mailspring.rpm
+dnf install -y mailspring.rpm
+rm -rf mailspring.rpm
+
+curl -fsSL https://github.com/derailed/k9s/releases/download/v${K9S_VERSION]/k9s_Linux_x86_64.tar.gz | tar -xzv k9s
+mv k9s /usr/local/bin/k9s && chmod +x /usr/local/bin/k9s
+
+curl -fsSL https://github.com/cilium/cilium-cli/releases/download/v${CILIUMCTL_VERSION}/cilium-linux-amd64.tar.gz  | tar -xzv ciliumctl
+mv cilium /usr/local/bin/cilium && chmod +x /usr/local/bin/cilium
+
+curl -fsSL https://github.com/istio/istio/releases/download/1.15.0/istioctl-1.15.0-linux-amd64.tar.gz | tar -xzv istioctl
+mv istioctl /usr/local/bin/istioctl && chmod +x /usr/local/bin/istioctl
+
