@@ -6,6 +6,13 @@ dnf group install -y --with-optional virtualization
 dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stable/skype-stable.repo
 
+dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+dnf upgrade --refresh
+dnf groupupdate core
+dnf install -y rpmfusion-free-release-tainted dnf-plugins-core
+
 dnf install -y \
   ytop \
   alacritty \
@@ -17,6 +24,7 @@ dnf install -y \
   vim \
   wget \
   git \
+  git-lfs \
   gitk \
   gedit \
   strace \
@@ -137,8 +145,6 @@ dnf install -y \
   iperf3 \
   golang-github-google-jsonnet \
   wl-clipboard \
-  '@Development tools' \
-  '@gnome' \
   xournal \
   libreoffice \
   libreoffice-langpack-de \
@@ -164,10 +170,16 @@ dnf install -y \
   vinagre \
   restic \
   borgbackup \
+  gnome-tweaks \
+  gnome-extensions-app \
+  gnome-shell-extension-appindicator \
+  gnome-shell-extension-pop-shell \
   tor \
   hugo \
   golang \
   golang-src \
+  nextcloud-client \
+  nextcloud-client-nautilus \
   aircrack-ng \
   wireshark \
   traceroute \
@@ -177,3 +189,8 @@ dnf install -y \
   hydra \
   packer
 
+dnf group install -y \
+  'Development tools' 
+
+echo 'fs.inotify.max_user_watches = 524288' >> /etc/sysctl.conf
+sysctl -p

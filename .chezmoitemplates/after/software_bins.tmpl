@@ -9,7 +9,7 @@ SLACK_VERSION=4.28.171 #https://slack.com/downloads/linux
 ZOOM_VERSION=5.11.10.4400 #https://support.zoom.us/hc/en-us/articles/205759689-Release-notes-for-Linux
 BITWARDEN_VERSION=2022.8.1  #https://github.com/bitwarden/clients/releases
 MAILSPRING_VERSION=1.10.5 #https://github.com/Foundry376/Mailspring/releases
-K9S_VERSION=0.26.3 #https://github.com/derailed/k9s/releases
+K9S_VERSION=0.26.6 #https://github.com/derailed/k9s/releases
 CILIUMCTL_VERSION=0.12.3 #https://github.com/cilium/cilium-cli/releases
 ISTIOCTL_VERSION=1.15.0 #https://github.com/istio/istio/releases/
 # CTLPTL_VERSION
@@ -67,7 +67,7 @@ curl -L https://github.com/Foundry376/Mailspring/releases/download/${MAILSPRING_
 dnf install -y mailspring.rpm
 rm -rf mailspring.rpm
 
-curl -fsSL https://github.com/derailed/k9s/releases/download/v${K9S_VERSION]/k9s_Linux_x86_64.tar.gz | tar -xzv k9s
+curl -fsSL https://github.com/derailed/k9s/releases/download/v${K9S_VERSION}/k9s_Linux_x86_64.tar.gz | tar -xzv k9s
 mv k9s /usr/local/bin/k9s && chmod +x /usr/local/bin/k9s
 
 curl -fsSL https://github.com/cilium/cilium-cli/releases/download/v${CILIUMCTL_VERSION}/cilium-linux-amd64.tar.gz  | tar -xzv ciliumctl
