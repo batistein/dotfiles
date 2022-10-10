@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if  [ "$(ls -A ~/.tmux/plugins/tpm/)" ]
 then
         echo "tpm already installed"

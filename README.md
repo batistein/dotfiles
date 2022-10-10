@@ -119,6 +119,11 @@ Tmux is used as Terminalmultiplexer and to achieve together with neovim a IDE-li
 - vimux
 - vim-tmux-navigator
 - vim-tmux-runner
+
+prefix + I
+- Installs new plugins from GitHub or any other git repository
+- Refreshes TMUX environment
+
 ## Nvim
 Is running with vim-plug.
 ## fzf

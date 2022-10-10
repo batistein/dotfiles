@@ -1,3 +1,6 @@
 #!/bin/sh
 
   {{ template "after/software_dnf.tmpl" . }}
+  {{ template "after/software_bins.tmpl" . }}
+  {{ template "after/software_ruby_pip.tmpl" . }}
+

@@ -1,19 +1,19 @@
 
 ## Install main packages
-dnf copr enable atim/ytop -y
-dnf copr enable atim/alacritty -y
-dnf group install -y --with-optional virtualization
-dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
-curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stable/skype-stable.repo
+sudo dnf copr enable atim/ytop -y
+sudo dnf copr enable atim/alacritty -y
+sudo dnf group install -y --with-optional virtualization
+sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+sudo curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stable/skype-stable.repo
 
-dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-dnf upgrade --refresh
-dnf groupupdate core
-dnf install -y rpmfusion-free-release-tainted dnf-plugins-core
+sudo dnf upgrade -y --refresh
+sudo dnf groupupdate -y core
+sudo dnf install -y rpmfusion-free-release-tainted dnf-plugins-core
 
-dnf install -y \
+sudo dnf install -y \
   ytop \
   alacritty \
   terminator \
@@ -21,6 +21,7 @@ dnf install -y \
   veracrypt \
   skypeforlinux \
   lpf-spotify-client \
+  google-chrome-stable \
   vim \
   wget \
   git \
@@ -41,6 +42,8 @@ dnf install -y \
   ipython \
   python-virtualenv \
   python-virtualenvwrapper \
+  python-certbot-apache \
+  python3-pip \
   pinpoint \
   mc \
   virt-manager \
@@ -66,7 +69,6 @@ dnf install -y \
   fuse-exfat \
   exfat-utils \
   pandoc \
-  python-certbot-apache \
   rust \
   cargo \
   telnet \

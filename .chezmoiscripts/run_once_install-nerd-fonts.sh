@@ -1,6 +1,6 @@
 #!/bin/sh
 if  [ "$(ls -A ~/.nerd-fonts)" ]; then 
-    echo "krew already installed"
+    echo "nerd-font already installed"
 else
 (
     git clone --depth=1 https://github.com/ryanoasis/nerd-fonts ~/.nerd-fonts

@@ -28,6 +28,9 @@ setopt COMPLETE_ALIASES
 
 zstyle ':completion::complete:*' gain-privileges 1
 
+# define PATH
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/usr/local/go/bin:$HOME/bin:$HOME/.krew/bin:$HOME/.cargo/bin"
+
 # History
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
