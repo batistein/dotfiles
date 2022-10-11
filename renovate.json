@@ -10,7 +10,7 @@
   ],
   "regexManagers": [
     {
-      "fileMatch": ["^.tmpl$"],
+      "fileMatch": [".tmpl$"],
       "matchStrings": [
         "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_VERSION=(?<currentValue>.*)\\s"
       ],
