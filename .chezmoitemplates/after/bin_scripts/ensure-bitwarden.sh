@@ -83,5 +83,6 @@ function install_dnf() {
   echo "Installation Finished"
 }
 
+MINIMUM_BITWARDEN_VERSION=$(echo ${MINIMUM_BITWARDEN_VERSION} | sed 's/desktop-v//')
 check_bitwarden_installed "$@"
 verify_bitwarden_version "$@"

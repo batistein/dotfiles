@@ -1,15 +1,29 @@
+#https://github.com/bazelbuild/bazelisk/releases
 # renovate: datasource=github-releases depName=bazelbuild/bazelisk versioning=semver-coerced
-BAZELISK_VERSION=1.14.0 #https://github.com/bazelbuild/bazelisk/releases
+BAZELISK_VERSION=1.14.0 
+
+#https://github.com/twpayne/chezmoi/releases
 # renovate: datasource=github-releases depName=twpayne/chezmoi versioning=semver-coerced
-CHEZMOI_VERSION=2.22.0 #https://github.com/twpayne/chezmoi/releases
+CHEZMOI_VERSION=2.22.0
+
 KUBERNETES_VERSION=1.25.0 #https://github.com/kubernetes/kubernetes/releases
 KIND_VERSION=0.16.0 #https://github.com/kubernetes-sigs/kind/releases
+
+#https://github.com/kubernetes-sigs/cluster-api/releases
 # renovate: datasource=github-releases depName=kubernetes-sigs/cluster-api versioning=semver-coerced
-CLUSTERCTL_VERSION=1.2.1 #https://github.com/kubernetes-sigs/cluster-api/releases
+CLUSTERCTL_VERSION=1.2.1
+
 ZULIP_VERSION=5.9.4-rc.0 
-SLACK_VERSION=4.28.171 #https://slack.com/downloads/linux
+
+#https://slack.com/downloads/linux
+SLACK_VERSION=4.28.171 
+
 ZOOM_VERSION=5.11.10.4400 #https://support.zoom.us/hc/en-us/articles/205759689-Release-notes-for-Linux
-BITWARDEN_VERSION=2022.8.1  #https://github.com/bitwarden/clients/releases
+
+#https://github.com/bitwarden/clients/releases
+# renovate: datasource=github-releases depName=bitwarden/clients versioning="regex:^(?<compatibility>.*)-v?(?<major>\\d+)\\.?(?<minor>\\d+)?\\.?(?<patch>\\d+)?$"
+BITWARDEN_VERSION=desktop-v2022.8.1
+
 MAILSPRING_VERSION=1.10.5 #https://github.com/Foundry376/Mailspring/releases
 K9S_VERSION=0.26.6 #https://github.com/derailed/k9s/releases
 CILIUMCTL_VERSION=0.12.3 #https://github.com/cilium/cilium-cli/releases
