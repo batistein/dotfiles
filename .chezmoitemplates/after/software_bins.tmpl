@@ -22,7 +22,7 @@ ZOOM_VERSION=5.11.10.4400 #https://support.zoom.us/hc/en-us/articles/205759689-R
 
 #https://github.com/bitwarden/clients/releases
 # renovate: datasource=github-releases depName=bitwarden/clients versioning="regex:^(?<compatibility>.*)-v?(?<major>\\d+)\\.?(?<minor>\\d+)?\\.?(?<patch>\\d+)?$"
-BITWARDEN_VERSION=desktop-v2022.8.1
+BITWARDEN_COMPATIBLE_VERSION=desktop-v2022.8.1
 
 MAILSPRING_VERSION=1.10.5 #https://github.com/Foundry376/Mailspring/releases
 K9S_VERSION=0.26.6 #https://github.com/derailed/k9s/releases
@@ -73,7 +73,7 @@ MINIMUM_ZOOM_VERSION=$ZOOM_VERSION {{ template "after/bin_scripts/ensure-zoom.sh
 
 MINIMUM_CHEZMOI_VERSION=$CHEZMOI_VERSION {{ template "after/bin_scripts/ensure-chezmoi.sh" . }}
 
-MINIMUM_BITWARDEN_VERSION=$BITWARDEN_VERSION {{ template "after/bin_scripts/ensure-bitwarden.sh" . }}
+MINIMUM_BITWARDEN_VERSION=$BITWARDEN_COMPATIBLE_VERSION {{ template "after/bin_scripts/ensure-bitwarden.sh" . }}
 
 MINIMUM_MAILSPRING_VERSION=$MAILSPRING_VERSION {{ template "after/bin_scripts/ensure-mailspring.sh" . }}
 
