@@ -14,7 +14,8 @@
       "matchStrings": [
         "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_VERSION=(?<currentValue>.*)\\s"
       ],
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+      "versioningTemplate": "{{#if (eq versioning "compatible") }}
+      regex:^(?<compatibility>.*)-v?(?<major>\\d+)\\.?(?<minor>\\d+)?\\.?(?<patch>\\d+)?${{else if}}{{{versioning}}}{{else}}semver{{/if}}"
     }
   ]
 }
