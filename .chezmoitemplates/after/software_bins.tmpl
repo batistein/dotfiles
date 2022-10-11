@@ -1,8 +1,10 @@
-
+# renovate: datasource=github-releases depName=bazelbuild/bazelisk versioning=semver-coerced
 BAZELISK_VERSION=1.14.0 #https://github.com/bazelbuild/bazelisk/releases
+# renovate: datasource=github-releases depName=twpayne/chezmoi versioning=semver-coerced
 CHEZMOI_VERSION=2.22.0 #https://github.com/twpayne/chezmoi/releases
 KUBERNETES_VERSION=1.25.0 #https://github.com/kubernetes/kubernetes/releases
 KIND_VERSION=0.16.0 #https://github.com/kubernetes-sigs/kind/releases
+# renovate: datasource=github-releases depName=kubernetes-sigs/cluster-api versioning=semver-coerced
 CLUSTERCTL_VERSION=1.2.1 #https://github.com/kubernetes-sigs/cluster-api/releases
 ZULIP_VERSION=5.9.4-rc.0 
 SLACK_VERSION=4.28.171 #https://slack.com/downloads/linux
@@ -55,6 +57,8 @@ MINIMUM_SLACK_VERSION=$SLACK_VERSION {{ template "after/bin_scripts/ensure-slack
 
 MINIMUM_ZOOM_VERSION=$ZOOM_VERSION {{ template "after/bin_scripts/ensure-zoom.sh" . }}
 
+MINIMUM_CHEZMOI_VERSION=$CHEZMOI_VERSION {{ template "after/bin_scripts/ensure-chezmoi.sh" . }}
+
 MINIMUM_BITWARDEN_VERSION=$BITWARDEN_VERSION {{ template "after/bin_scripts/ensure-bitwarden.sh" . }}
 
 MINIMUM_MAILSPRING_VERSION=$MAILSPRING_VERSION {{ template "after/bin_scripts/ensure-mailspring.sh" . }}
@@ -63,32 +67,3 @@ MINIMUM_K9S_VERSION=$K9S_VERSION {{ template "after/bin_scripts/ensure-k9s.sh" .
 
 MINIMUM_ISTIOCTL_VERSION=$ISTIOCTL_VERSION {{ template "after/bin_scripts/ensure-istioctl.sh" . }}
 
-# 
-# curl -Lo ./chezmoi.rpm https://github.com/twpayne/chezmoi/releases/download/v${CHEZMOI_VERSION}/chezmoi-${CHEZMOI_VERSION}-x86_64.rpm
-# dnf install -y ./chezmoi.rpm
-# 
-
-
-# 
-# curl -L https://zoom.us/client/${ZOOM_VERSION}/zoom_x86_64.rpm -o zoom.rpm
-# dnf install -y zoom.rpm
-# rm -rf zoom.rpm
-# 
-
-# curl -L https://github.com/bitwarden/clients/releases/download/desktop-v${BITWARDEN_VERSION}/Bitwarden-${BITWARDEN_VERSION}-x86_64.rpm -o bitwarden.rpm
-# dnf install -y bitwarden.rpm
-# rm -rf bitwarden.rpm
-# 
-
-# curl -L https://github.com/Foundry376/Mailspring/releases/download/${MAILSPRING_VERSION}/mailspring-${MAILSPRING_VERSION}-0.1.x86_64.rpm -o mailspring.rpm
-# dnf install -y mailspring.rpm
-# rm -rf mailspring.rpm
-# 
-# curl -fsSL https://github.com/derailed/k9s/releases/download/v${K9S_VERSION}/k9s_Linux_x86_64.tar.gz | tar -xzv k9s
-# mv k9s /usr/local/bin/k9s && chmod +x /usr/local/bin/k9s
-# 
-
-# curl -fsSL https://github.com/istio/istio/releases/download/1.15.0/istioctl-1.15.0-linux-amd64.tar.gz | tar -xzv istioctl
-# mv istioctl /usr/local/bin/istioctl && chmod +x /usr/local/bin/istioctl
-# 
-# 
