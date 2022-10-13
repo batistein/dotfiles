@@ -3,6 +3,9 @@
   "extends": [
     "config:base"
   ],
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
+  "branchConcurrentLimit": 0,
   "timezone": "Europe/Madrid",
   "schedule": [
     "before 5am every weekday",
@@ -15,13 +18,6 @@
         "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_VERSION=(?<currentValue>.*)\\s"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
-    },
-    {
-      "fileMatch": [".tmpl$"],
-      "matchStrings": [
-        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\s.*?_COMPATIBLE_VERSION=(?<currentValue>.*)\\s"
-      ],
-      "versioningTemplate": "regex:((?<compatibility>.*)-v)(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)"
     }
   ]
 }
