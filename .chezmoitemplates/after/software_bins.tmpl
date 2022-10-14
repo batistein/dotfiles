@@ -13,22 +13,22 @@ ZOOM_VERSION=5.11.10.4400 #https://support.zoom.us/hc/en-us/articles/205759689-R
 
 #https://github.com/bazelbuild/bazelisk/releases
 # renovate: datasource=github-releases depName=bazelbuild/bazelisk extractVersion=^v(?<version>.*)$
-BAZELISK_VERSION=1.14.0 
+BAZELISK_VERSION=1.14.0
 
 #https://github.com/twpayne/chezmoi/releases
 # renovate: datasource=github-releases depName=twpayne/chezmoi extractVersion=^v(?<version>.*)$
 CHEZMOI_VERSION=2.25.0
 
 #https://github.com/kubernetes/kubernetes/releases
-# renovate: datasource=github-tags depName=kubernetes/kubernetes extractVersion=^v(?<version>.*)$  
-KUBERNETES_VERSION=1.25.2 
+# renovate: datasource=github-tags depName=kubernetes/kubernetes extractVersion=^v(?<version>.*)$
+KUBERNETES_VERSION=1.25.2
 
 #https://github.com/kubernetes-sigs/kind/releases
-# renovate: datasource=github-tags depName=kubernetes-sigs/kind extractVersion=^v(?<version>.*)$  
-KIND_VERSION=0.15.0 
+# renovate: datasource=github-tags depName=kubernetes-sigs/kind extractVersion=^v(?<version>.*)$
+KIND_VERSION=0.15.0
 
 #https://github.com/kubernetes-sigs/cluster-api/releases
-# renovate: datasource=github-releases depName=kubernetes-sigs/cluster-api extractVersion=^v(?<version>.*)$  
+# renovate: datasource=github-releases depName=kubernetes-sigs/cluster-api extractVersion=^v(?<version>.*)$
 CLUSTERCTL_VERSION=1.2.1
 
 #https://github.com/bitwarden/clients/releases
@@ -36,48 +36,48 @@ CLUSTERCTL_VERSION=1.2.1
 BITWARDEN_VERSION=desktop-v2022.10.0
 
 #https://github.com/Foundry376/Mailspring/releases
-# renovate: datasource=github-releases depName=Foundry376/Mailspring 
-MAILSPRING_VERSION=1.10.5 
+# renovate: datasource=github-releases depName=Foundry376/Mailspring
+MAILSPRING_VERSION=1.10.5
 
 #https://github.com/derailed/k9s/releases
 # renovate: datasource=github-releases depName=derailed/k9s extractVersion=^v(?<version>.*)$
-K9S_VERSION=0.26.5 
+K9S_VERSION=0.26.5
 
 #https://github.com/cilium/cilium-cli/releases
 # renovate: datasource=github-tags depName=cilium/cilium-cli extractVersion=^v(?<version>.*)$
 CILIUMCTL_VERSION=0.12.4
 
 #https://github.com/istio/istio/releases/
-# renovate: datasource=github-releases depName=istio/istio extractVersion=^Istio (?<version>.*)$
+# renovate: datasource=github-tags depName=istio/istio
 ISTIOCTL_VERSION=1.15.1
 
 #https://github.com/tilt-dev/ctlptl/releases
 # renovate: datasource=github-releases depName=tilt-dev/ctlptl extractVersion=^v(?<version>.*)$
-CTLPTL_VERSION=0.8.9 
+CTLPTL_VERSION=0.8.9
 
 #https://github.com/hetznercloud/cli/releases
 # renovate: datasource=github-tags depName=tilt-dev/ctlptl extractVersion=^v(?<version>.*)$
-HCLOUD_VERSION=1.30.2 
+HCLOUD_VERSION=1.30.2
 
 #https://github.com/helm/helm/releases
 # renovate: datasource=github-tags depName=helm/helm extractVersion=^v(?<version>.*)$
-HELM_VERSION=3.10.0 
+HELM_VERSION=3.10.0
 
 #https://github.com/aslafy-z/helm-git/releases
 # renovate: datasource=github-tags depName=aslafy-z/helm-git extractVersion=^v(?<version>.*)$
-HELM_GIT_VERSION=0.11.1	
+HELM_GIT_VERSION=0.11.1
 
 #https://github.com/databus23/helm-diff/releases
 # renovate: datasource=github-tags depName=databus23/helm-diff extractVersion=^v(?<version>.*)$
-HELM_DIFF_VERSION=3.4.1	
+HELM_DIFF_VERSION=3.4.1
 
 #https://github.com/helmfile/helmfile/releases
 # renovate: datasource=github-tags depName=helmfile/helmfile extractVersion=^v(?<version>.*)$
-HELMFILE_VERSION=0.146.0 
+HELMFILE_VERSION=0.146.0
 
 #https://github.com/tilt-dev/tilt/releases
 # renovate: datasource=github-tags depName=tilt-dev/tilt extractVersion=^v(?<version>.*)$
-TILT_VERSION=0.30.8	
+TILT_VERSION=0.30.8
 
 MINIMUM_CILIUM_VERSION=$CILIUMCTL_VERSION {{ template "after/bin_scripts/ensure-cilium-cli.sh" . }}
 
