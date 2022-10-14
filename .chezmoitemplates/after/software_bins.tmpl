@@ -10,7 +10,7 @@ KUBERNETES_VERSION=1.25.0 #https://github.com/kubernetes/kubernetes/releases
 KIND_VERSION=0.16.0 #https://github.com/kubernetes-sigs/kind/releases
 
 #https://github.com/kubernetes-sigs/cluster-api/releases
-# renovate: datasource=github-releases depName=kubernetes-sigs/cluster-api versioning=semver
+# renovate: datasource=github-releases depName=kubernetes-sigs/cluster-api extractVersion=^v(?<version>.*)$ versioning=semver 
 CLUSTERCTL_VERSION=1.2.1
 
 ZULIP_VERSION=5.9.4-rc.0 
