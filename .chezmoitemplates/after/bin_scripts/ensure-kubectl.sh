@@ -66,10 +66,10 @@ confirm() {
 
 install_kubectl() {
     if [[ "${OSTYPE}" == "linux"* ]]; then
-      curl -sLo "kubectl" https://storage.googleapis.com/kubernetes-release/release/${MINIMUM_KUBECTL_VERSION}/bin/linux/amd64/kubectl
+      curl -sLo "kubectl" https://dl.k8s.io/release/v${MINIMUM_KUBECTL_VERSION}/bin/linux/amd64/kubectl
       copy_binary
     elif [[ "$OSTYPE" == "darwin"* ]]; then
-      curl -sLo "kubectl" https://storage.googleapis.com/kubernetes-release/release/${MINIMUM_KUBECTL_VERSION}/bin/darwin/amd64/kubectl
+      curl -sLo "kubectl" https://dl.k8s.io/release/v${MINIMUM_KUBECTL_VERSION}/bin/darwin/amd64/kubectl
       copy_binary
     else
       set +x
