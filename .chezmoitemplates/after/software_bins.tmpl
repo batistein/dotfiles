@@ -21,7 +21,7 @@ SLACK_VERSION=4.28.171
 ZOOM_VERSION=5.11.10.4400 #https://support.zoom.us/hc/en-us/articles/205759689-Release-notes-for-Linux
 
 #https://github.com/bitwarden/clients/releases
-# renovate: datasource=github-releases depName=bitwarden/clients versioning=regex:((?<compatibility>.*?)-v)(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$
+# renovate: datasource=github-releases depName=bitwarden/clients versioning=regex:^desktop-v(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)$
 BITWARDEN_VERSION=desktop-v2022.8.1
 
 MAILSPRING_VERSION=1.10.5 #https://github.com/Foundry376/Mailspring/releases
