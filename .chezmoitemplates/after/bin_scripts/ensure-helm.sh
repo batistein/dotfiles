@@ -34,7 +34,7 @@ verify_helm_version() {
   helm_version="$(helm version --template="{{ "{{" }} .Version {{ "}}" }}")"
   if [[ "v${MINIMUM_HELM_VERSION}" != $(echo -e "v${MINIMUM_HELM_VERSION}\n${helm_version}" | sort -s -t. -k 1,1n -k 2,2n -k 3,3n | head -n1) ]]; then
     cat <<EOF
-Detected helm version: v${helm_version}.
+Detected helm version: ${helm_version}.
 Requires ${MINIMUM_HELM_VERSION} or greater.
 Please install ${MINIMUM_HELM_VERSION} or later.
 

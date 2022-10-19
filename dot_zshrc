@@ -19,6 +19,9 @@ for file in ${config_files}; do
   source "$file"
 done
 
+# define PATH
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/usr/local/go/bin:$HOME/bin:$HOME/.krew/bin:$HOME/.cargo/bin"
+
 # load zsh completion files
 fpath=(~/.zsh/completions $fpath) 
 autoload -U compinit && compinit
@@ -27,9 +30,6 @@ setopt inc_append_history share_history autocd autopushd pushdignoredups
 setopt COMPLETE_ALIASES
 
 zstyle ':completion::complete:*' gain-privileges 1
-
-# define PATH
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/usr/local/go/bin:$HOME/bin:$HOME/.krew/bin:$HOME/.cargo/bin"
 
 # History
 SAVEHIST=100000

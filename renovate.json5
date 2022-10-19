@@ -1,12 +1,21 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:base",
+    ":disableRateLimiting",
+    "github>whitesource/merge-confidence:beta"
   ],
+  "timezone": "Europe/Madrid",
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Renovate Dashboard",
+  "suppressNotifications": ["prIgnoreNotification"],
+  "fetchReleaseNotes": true,
+  "rebaseWhen": "conflicted",
+  "commitBodyTable": true,
+  "labels": ["renovate"],
+  "ignorePaths": [".archived/**"],
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
   "branchConcurrentLimit": 0,
-  "timezone": "Europe/Madrid",
   "schedule": [
     "before 5am every weekday",
     "every weekend"

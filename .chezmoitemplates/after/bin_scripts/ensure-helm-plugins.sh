@@ -51,7 +51,7 @@ verify_helm_plugin_version() {
 
   if [[ "${helm_minimum_plugin_version}" != $(echo -e "${helm_minimum_plugin_version}\n${helm_plugin_version}" | sort -s -t. -k 1,1n -k 2,2n -k 3,3n | head -n1) ]]; then
     cat <<EOF
-Detected helm plugin version of $1: ${helm_plugin_version}.
+Detected helm plugin version of $1: ${helm_plugin_version}
 Requires ${helm_minimum_plugin_version} or greater.
 Please install ${helm_minimum_plugin_version} or later.
 
@@ -60,7 +60,7 @@ EOF
     confirm && echo "Installing Helm Plugin $1" && update_helm_plugin "$@"
   else
     cat <<EOF
-Detected helm pluginversion: ${helm_plugin_version}.
+Detected helm pluginversion: ${helm_plugin_version}
 Requires ${helm_minimum_plugin_version} or greater.
 Nothing to do!
 
