@@ -47,6 +47,10 @@ K9S_VERSION=0.26.7
 # renovate: datasource=github-tags depName=cilium/cilium-cli extractVersion=^v(?<version>.*)$
 CILIUMCTL_VERSION=0.12.5
 
+#https://github.com/mikefarah/yq/releases
+# renovate: datasource=github-tags depName=mikefarah/yq extractVersion=^v(?<version>.*)$
+YQ_VERSION=4.28.1
+
 #https://github.com/istio/istio/releases/
 # renovate: datasource=github-tags depName=istio/istio
 ISTIOCTL_VERSION=1.15.2
@@ -80,6 +84,8 @@ HELMFILE_VERSION=0.147.0
 TILT_VERSION=0.30.9
 
 MINIMUM_CILIUM_VERSION=$CILIUMCTL_VERSION {{ template "after/bin_scripts/ensure-cilium-cli.sh" . }}
+
+MINIMUM_YQ_VERSION=$YQ_VERSION {{ template "after/bin_scripts/ensure-yq.sh" . }}
 
 MINIMUM_CLUSTERCTL_VERSION=$CLUSTERCTL_VERSION {{ template "after/bin_scripts/ensure-clusterctl.sh" . }}
 
