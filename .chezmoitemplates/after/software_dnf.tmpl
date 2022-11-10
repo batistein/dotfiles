@@ -9,6 +9,8 @@ sudo curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stabl
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+
 sudo dnf upgrade -y --refresh
 sudo dnf groupupdate -y core
 sudo dnf install -y rpmfusion-free-release-tainted dnf-plugins-core
@@ -187,7 +189,11 @@ sudo dnf install -y \
   lynis \
   hydra \
   terraform \
-  packer
+  packer \
+  docker-ce \
+  docker-ce-cli \
+  containerd.io \
+  docker-compose-plugin
 
 dnf group install -y \
   'Development tools' 
