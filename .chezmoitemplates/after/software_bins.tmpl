@@ -11,6 +11,9 @@ SLACK_VERSION=4.28.171
 
 ZOOM_VERSION=5.11.10.4400 #https://support.zoom.us/hc/en-us/articles/205759689-Release-notes-for-Linux
 
+# renovate: datasource=github-tags depName=jgraph/drawio-desktop extractVersion=^v(?<version>.*)$
+DRAWIO_VERSION=20.3.0
+
 #https://github.com/bazelbuild/bazelisk/releases
 # renovate: datasource=github-releases depName=bazelbuild/bazelisk extractVersion=^v(?<version>.*)$
 BAZELISK_VERSION=1.15.0
@@ -118,6 +121,8 @@ MINIMUM_BAZEL_VERSION=$BAZELISK_VERSION {{ template "after/bin_scripts/ensure-ba
 MINIMUM_SLACK_VERSION=$SLACK_VERSION {{ template "after/bin_scripts/ensure-slack.sh" . }}
 
 MINIMUM_ZOOM_VERSION=$ZOOM_VERSION {{ template "after/bin_scripts/ensure-zoom.sh" . }}
+
+MINIMUM_DRAWIO_VERSION=$DRAWIO_VERSION {{ template "after/bin_scripts/ensure-drawio.sh" . }}
 
 MINIMUM_CHEZMOI_VERSION=$CHEZMOI_VERSION {{ template "after/bin_scripts/ensure-chezmoi.sh" . }}
 
