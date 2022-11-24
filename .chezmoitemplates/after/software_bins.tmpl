@@ -30,6 +30,9 @@ KUBERNETES_VERSION=1.25.4
 # renovate: datasource=github-tags depName=kubernetes-sigs/kind extractVersion=^v(?<version>.*)$
 KIND_VERSION=0.17.0
 
+# renovate: datasource=github-tags depName=docker/buildx extractVersion=^v(?<version>.*)$
+BUILDX_VERSION=0.9.1
+
 #https://github.com/kubernetes-sigs/cluster-api/releases
 # renovate: datasource=github-releases depName=kubernetes-sigs/cluster-api extractVersion=^v(?<version>.*)$
 CLUSTERCTL_VERSION=1.2.6
@@ -109,6 +112,8 @@ HELM_GIT_VERSION=$HELM_GIT_VERSION HELM_DIFF_VERSION=$HELM_DIFF_VERSION {{ templ
 MINIMUM_HELMFILE_VERSION=$HELMFILE_VERSION {{ template "after/bin_scripts/ensure-helmfile.sh" . }}
 
 MINIMUM_KIND_VERSION=$KIND_VERSION {{ template "after/bin_scripts/ensure-kind.sh" . }}
+
+MINIMUM_BUILDX_VERSION=$BUILDX_VERSION {{ template "after/bin_scripts/ensure-buildx.sh" . }}
 
 MINIMUM_KUBECTL_VERSION=$KUBERNETES_VERSION {{ template "after/bin_scripts/ensure-kubectl.sh" . }}
 
