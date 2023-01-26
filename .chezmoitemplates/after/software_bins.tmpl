@@ -91,7 +91,7 @@ HELMFILE_VERSION=0.150.0
 
 #https://github.com/tilt-dev/tilt/releases
 # renovate: datasource=github-tags depName=tilt-dev/tilt extractVersion=^v(?<version>.*)$
-TILT_VERSION=0.31.0
+TILT_VERSION=0.31.1
 
 MINIMUM_CILIUM_VERSION=$CILIUMCTL_VERSION {{ template "after/bin_scripts/ensure-cilium-cli.sh" . }}
 
