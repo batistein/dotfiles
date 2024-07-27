@@ -24,10 +24,12 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/usr/local/go/bin
 
 # load zsh completion files
 fpath=(~/.zsh/completions $fpath) 
-autoload -U compinit && compinit
+
+source <(kubectl completion zsh)
+alias k=kubectl
+compdef __start_kubectl k
 
 setopt inc_append_history share_history autocd autopushd pushdignoredups 
-setopt COMPLETE_ALIASES
 
 zstyle ':completion::complete:*' gain-privileges 1
 
